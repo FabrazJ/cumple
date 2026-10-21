@@ -134,7 +134,7 @@
       font: 500 15px 'DM Sans', sans-serif;
       text-align: center;
       outline: none;
-      text-transform: uppercase; /* <-- Fuerza a verse en mayusculas mientras escribe */
+      text-transform: uppercase;
     }
     .input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px #e0be801c; }
     .input::placeholder { color: #9da8bb; text-transform: none; }
@@ -277,7 +277,6 @@
 
     document.getElementById('nameForm').addEventListener('submit', e => {
       e.preventDefault();
-      // Se añade .toUpperCase() para transformar el texto ingresado a mayúsculas
       const n = document.getElementById('name').value.trim().toUpperCase();
       if (!n) {
         status('Escribe tu nombre para continuar.');
@@ -330,7 +329,6 @@
         `;
         document.getElementById('companionForm').onsubmit = e => {
           e.preventDefault();
-          // También se pasa a mayúsculas el nombre y apellido del acompañante por consistencia
           const name = document.getElementById('companionName').value.trim().toUpperCase();
           if (!name) {
             status('Ingresa el nombre de tu acompañante.');
@@ -428,6 +426,7 @@
           <div class="value" style="font-size:34px">Chelsea</div>
           <div class="sub">Chill & Drink · Urdesa, Guayaquil</div>
           <p class="sub" style="margin:18px 0 0">${companion ? `✦ Acompañante: ${safe(companion)} ✦` : '✦ Asistencia individual ✦'}</p>
+          <p class="sub" style="margin:8px 0 0; color: var(--gold); font-weight:600;">✦ Consumo sugerido / obligatorio: $20 ✦</p>
         </div>
         <div class="actions">
           <button id="download" class="btn gold">↓ GUARDAR MI INVITACIÓN</button>
@@ -464,15 +463,15 @@
         x.fillText(s, 540, y);
       }
 
-      t('✦', 190, 85, '#ebc98c');
-      t('YOU ARE INVITED', 290, 27, '#ebc98c', 'Arial');
-      t('BIRTHDAY NIGHT', 425, 86, '#f4e3c3');
+      t('✦', 170, 85, '#ebc98c');
+      t('YOU ARE INVITED', 265, 27, '#ebc98c', 'Arial');
+      t('BIRTHDAY NIGHT', 395, 86, '#f4e3c3');
       x.strokeStyle = '#d9b77d';
       x.beginPath();
-      x.moveTo(240, 500);
-      x.lineTo(840, 500);
+      x.moveTo(240, 460);
+      x.lineTo(840, 460);
       x.stroke();
-      t('INVITACIÓN PARA', 575, 25, '#ebc98c', 'Arial');
+      t('INVITACIÓN PARA', 530, 25, '#ebc98c', 'Arial');
       
       let fs = 78;
       x.font = `${fs}px Georgia`;
@@ -480,11 +479,11 @@
         fs -= 2;
         x.font = `${fs}px Georgia`;
       }
-      t(guest, 680, fs);
-      t('VIERNES 23 DE OCTUBRE', 835, 48, '#ebc98c');
-      t('2026 · DESDE LAS 8:00 PM', 905, 34);
-      t('CHELSEA', 1030, 85, '#f4e3c3');
-      t('URDESA · GUAYAQUIL', 1095, 32, '#ebc98c', 'Arial');
+      t(guest, 625, fs);
+      t('VIERNES 23 DE OCTUBRE', 775, 48, '#ebc98c');
+      t('2026 · DESDE LAS 8:00 PM', 840, 34);
+      t('CHELSEA', 960, 85, '#f4e3c3');
+      t('URDESA · GUAYAQUIL', 1020, 32, '#ebc98c', 'Arial');
       
       let companionLabel = companion ? 'ACOMPAÑANTE: ' + companion : 'ASISTENCIA INDIVIDUAL';
       let cf = 27;
@@ -493,7 +492,8 @@
         cf -= 1;
         x.font = `${cf}px Arial`;
       }
-      t(companionLabel, 1180, cf, '#d9b77d', 'Arial');
+      t(companionLabel, 1100, cf, '#d9b77d', 'Arial');
+      t('✦ CONSUMO: $20 ✦', 1155, 26, '#ebc98c', 'Arial');
       t('PERSONAL INVITATION  ✦', 1230, 23, '#d9b77d', 'Arial');
       return c;
     }
