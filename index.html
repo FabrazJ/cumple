@@ -323,14 +323,14 @@
       document.getElementById('withCompanion').onclick = () => {
         document.getElementById('companionArea').innerHTML = `
           <form id="companionForm">
-            <p class="desc">Escribe el nombre de tu acompañante:</p>
+            <p class="desc">Escribe el nombre y apellido de tu acompañante:</p>
             <input id="companionName" class="input" type="text" maxlength="100" autocomplete="off" placeholder="Nombre y apellido del acompañante" required style="text-transform: uppercase;">
             <button class="btn gold" type="submit">CONFIRMAR LOS DOS ✦</button>
           </form>
         `;
         document.getElementById('companionForm').onsubmit = e => {
           e.preventDefault();
-          // También se pasa a mayúsculas el nombre del acompañante por consistencia
+          // También se pasa a mayúsculas el nombre y apellido del acompañante por consistencia
           const name = document.getElementById('companionName').value.trim().toUpperCase();
           if (!name) {
             status('Ingresa el nombre de tu acompañante.');
