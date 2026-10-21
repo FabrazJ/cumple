@@ -134,9 +134,10 @@
       font: 500 15px 'DM Sans', sans-serif;
       text-align: center;
       outline: none;
+      text-transform: uppercase; /* <-- Fuerza a verse en mayusculas mientras escribe */
     }
     .input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px #e0be801c; }
-    .input::placeholder { color: #9da8bb; }
+    .input::placeholder { color: #9da8bb; text-transform: none; }
     .btn {
       display: inline-flex;
       justify-content: center;
@@ -276,7 +277,8 @@
 
     document.getElementById('nameForm').addEventListener('submit', e => {
       e.preventDefault();
-      const n = document.getElementById('name').value.trim();
+      // Se añade .toUpperCase() para transformar el texto ingresado a mayúsculas
+      const n = document.getElementById('name').value.trim().toUpperCase();
       if (!n) {
         status('Escribe tu nombre para continuar.');
         return;
@@ -290,7 +292,7 @@
         <div class="spark">✦</div>
         <div class="eyebrow">Invitación personal</div>
         <h2 class="display" style="font-size:clamp(40px,10vw,60px)">Hola,<br><em>${safe(guest)}</em></h2>
-        <p class="desc">¡Me encantaría que seas parte de mi cumpleaños! ✨</p>
+        <p class="desc">¡Me encantaría que seas parte de mi cumpleaños!</p>
         <div class="line"></div>
         ${details()}
         <p class="desc">¡Puedes venir con un acompañante! ¿Nos acompañas a celebrar?</p>
@@ -322,13 +324,14 @@
         document.getElementById('companionArea').innerHTML = `
           <form id="companionForm">
             <p class="desc">Escribe el nombre de tu acompañante:</p>
-            <input id="companionName" class="input" type="text" maxlength="100" autocomplete="off" placeholder="Nombre y apellido del acompañante" required>
+            <input id="companionName" class="input" type="text" maxlength="100" autocomplete="off" placeholder="Nombre y apellido del acompañante" required style="text-transform: uppercase;">
             <button class="btn gold" type="submit">CONFIRMAR LOS DOS ✦</button>
           </form>
         `;
         document.getElementById('companionForm').onsubmit = e => {
           e.preventDefault();
-          const name = document.getElementById('companionName').value.trim();
+          // También se pasa a mayúsculas el nombre del acompañante por consistencia
+          const name = document.getElementById('companionName').value.trim().toUpperCase();
           if (!name) {
             status('Ingresa el nombre de tu acompañante.');
             return;
