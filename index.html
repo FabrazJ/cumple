@@ -272,6 +272,10 @@
           <div class="value">Chelsea</div>
           <div class="sub">Urdesa · Víctor Emilio Estrada y Cedros<br>Guayaquil, Ecuador</div>
         </div>
+        <div class="detail">
+          <div class="label">DRESS CODE</div>
+          <div class="value" style="font-size:24px">Semi-formal</div>
+        </div>
       `;
     }
 
@@ -362,7 +366,8 @@
               evento: EVENT,
               asistencia: attending ? 'Sí' : 'No',
               acompanante_permitido: attending ? 'Sí, 1 acompañante' : 'No aplica',
-              acompanante_nombre: attending ? (companion || 'Sin acompañante') : 'No aplica'
+              acompanante_nombre: attending ? (companion || 'Sin acompañante') : 'No aplica',
+              dresscode: 'Semi-formal'
             }),
             signal: controller.signal
           });
@@ -425,7 +430,8 @@
           <div class="sub">DESDE LAS 8:00 PM</div>
           <div class="value" style="font-size:34px">Chelsea</div>
           <div class="sub">Chill & Drink · Urdesa, Guayaquil</div>
-          <p class="sub" style="margin:18px 0 0">${companion ? `✦ Acompañante: ${safe(companion)} ✦` : '✦ Asistencia individual ✦'}</p>
+          <p class="sub" style="margin:14px 0 0">✦ Dress code: Semi-formal ✦</p>
+          <p class="sub" style="margin:4px 0 0">${companion ? `✦ Acompañante: ${safe(companion)} ✦` : '✦ Asistencia individual ✦'}</p>
           <p class="sub" style="margin:8px 0 0; color: var(--gold); font-weight:600;">✦ Consumo sugerido / obligatorio: $20 ✦</p>
         </div>
         <div class="actions">
@@ -463,15 +469,15 @@
         x.fillText(s, 540, y);
       }
 
-      t('✦', 170, 85, '#ebc98c');
-      t('YOU ARE INVITED', 265, 27, '#ebc98c', 'Arial');
-      t('BIRTHDAY NIGHT', 395, 86, '#f4e3c3');
+      t('✦', 160, 85, '#ebc98c');
+      t('YOU ARE INVITED', 250, 27, '#ebc98c', 'Arial');
+      t('BIRTHDAY NIGHT', 375, 86, '#f4e3c3');
       x.strokeStyle = '#d9b77d';
       x.beginPath();
-      x.moveTo(240, 460);
-      x.lineTo(840, 460);
+      x.moveTo(240, 440);
+      x.lineTo(840, 440);
       x.stroke();
-      t('INVITACIÓN PARA', 530, 25, '#ebc98c', 'Arial');
+      t('INVITACIÓN PARA', 510, 25, '#ebc98c', 'Arial');
       
       let fs = 78;
       x.font = `${fs}px Georgia`;
@@ -479,12 +485,14 @@
         fs -= 2;
         x.font = `${fs}px Georgia`;
       }
-      t(guest, 625, fs);
-      t('VIERNES 23 DE OCTUBRE', 775, 48, '#ebc98c');
-      t('2026 · DESDE LAS 8:00 PM', 840, 34);
-      t('CHELSEA', 960, 85, '#f4e3c3');
-      t('URDESA · GUAYAQUIL', 1020, 32, '#ebc98c', 'Arial');
+      t(guest, 600, fs);
+      t('VIERNES 23 DE OCTUBRE', 740, 48, '#ebc98c');
+      t('2026 · DESDE LAS 8:00 PM', 800, 34);
+      t('CHELSEA', 910, 85, '#f4e3c3');
+      t('URDESA · GUAYAQUIL', 965, 32, '#ebc98c', 'Arial');
       
+      t('DRESS CODE: SEMI-FORMAL', 1030, 26, '#d9b77d', 'Arial');
+
       let companionLabel = companion ? 'ACOMPAÑANTE: ' + companion : 'ASISTENCIA INDIVIDUAL';
       let cf = 27;
       x.font = `${cf}px Arial`;
@@ -492,8 +500,8 @@
         cf -= 1;
         x.font = `${cf}px Arial`;
       }
-      t(companionLabel, 1100, cf, '#d9b77d', 'Arial');
-      t('✦ CONSUMO: $20 ✦', 1155, 26, '#ebc98c', 'Arial');
+      t(companionLabel, 1090, cf, '#d9b77d', 'Arial');
+      t('✦ CONSUMO: $20 ✦', 1140, 26, '#ebc98c', 'Arial');
       t('PERSONAL INVITATION  ✦', 1230, 23, '#d9b77d', 'Arial');
       return c;
     }
